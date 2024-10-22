@@ -34,13 +34,21 @@ for await (const qs of ["td:first-child", "td:last-child"]) {
       `${h.padStart(2, "0")}:${m.padStart(2, "0")}`
     );
     return timetable;
-  }).flat().join("\n");
+  }).flat();
 
   // console.log(data);
 
   if (qs === "td:first-child") {
-    await Deno.writeTextFile("data/timetable_day.txt", data);
+    const result = { day: { timetable: data } };
+    await Deno.writeTextFile(
+      "data/timetable_weekday.json",
+      JSON.stringify(result, null, 2),
+    );
   } else if (qs === "td:last-child") {
-    await Deno.writeTextFile("data/timetable_weekend-holiday.txt", data);
+    const result = { holiday: { timetable: data } };
+    await Deno.writeTextFile(
+      "data/timetable_weekend-holiday.json",
+      JSON.stringify(result, null, 2),
+    );
   }
 }
