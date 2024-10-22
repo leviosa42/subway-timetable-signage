@@ -1,0 +1,7 @@
+{
+  "tasks": {
+    "fetch": "deno run -A src/fetch.ts",
+    "scrape": "deno run -A src/scrape.ts",
+    "setup": "deno task fetch && deno task scrape"
+  }
+}
