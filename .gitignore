@@ -1,2 +1,5 @@
 scraping/data/*
 !scraping/data/.gitkeep
+
+node_modules/
+.vite/
